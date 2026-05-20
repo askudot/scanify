@@ -7,4 +7,4 @@ export function getAIClient() {
   });
 }
 
-export const AI_MODEL = process.env.AI_MODEL || "xmtp/mimo-v2.5-pro";
+export const AI_MODEL = process.env.AI_MODEL || "gpt-4o-mini";

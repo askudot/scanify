@@ -2,7 +2,7 @@
 
 AI-Powered Document Scanner — Upload, analyze, and chat with any document instantly.
 
-Intelligent text extraction, deep analysis, and conversational Q&A — powered by MiMo AI.
+Intelligent text extraction, deep analysis, and conversational Q&A — powered by AI.
 
 ---
 
@@ -24,9 +24,9 @@ Scanify is a full-stack AI document intelligence platform that combines **multi-
 │                    API Layer                         │
 │   /api/extract  ·  /api/analyze  ·  /api/chat       │
 ├──────────────────────┬──────────────────────────────┤
-│  Document Parsers    │     MiMo AI (via 9Router)    │
-│  pdf-parse, mammoth, │     xmtp/mimo-v2.5-pro       │
-│  fs, OCR (planned)   │     Long-chain reasoning      │
+│  Document Parsers    │       AI Engine              │
+│  pdf-parse, mammoth, │   OpenAI-compatible API       │
+│  fs, OCR (planned)   │   Long-chain reasoning        │
 └──────────────────────┴──────────────────────────────┘
 ```
 
@@ -42,7 +42,7 @@ Scanify is a full-stack AI document intelligence platform that combines **multi-
 
 ## ⛽ Token Consumption Model
 
-Each AI call uses MiMo-V2.5-Pro via 9Router gateway. Estimated token usage per interaction:
+Each AI call uses an OpenAI-compatible reasoning model. Estimated token usage per interaction:
 
 | Feature | Prompt Tokens | Completion Tokens | Total/Call | Calls/Doc | Total/Doc |
 |---------|--------------|-------------------|------------|-----------|-----------|
@@ -55,7 +55,7 @@ Each AI call uses MiMo-V2.5-Pro via 9Router gateway. Estimated token usage per i
 - 100 docs/day → ~3.4M-11.7M tokens/day → ~102M-351M tokens/month
 - 1,000 docs/day → ~34M-117M tokens/day → ~1B-3.5B tokens/month
 
-> All AI features route through 9Router gateway with automatic key rotation for rate limit management.
+> AI features can route through any OpenAI-compatible gateway with automatic key rotation for rate limit management.
 
 ---
 
@@ -65,7 +65,7 @@ Each AI call uses MiMo-V2.5-Pro via 9Router gateway. Estimated token usage per i
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS 4 + Custom Pixel-Art Theme
 - **Fonts:** Pixelify Sans + VT323 (Google Fonts)
-- **AI Model:** MiMo-V2.5-Pro (via 9Router proxy)
+- **AI Model:** OpenAI-compatible API (configurable)
 - **Document Parsers:** pdf-parse, mammoth (DOCX)
 - **UI Library:** react-dropzone, lucide-react
 - **Deployment:** VPS / Vercel (Node.js production server)
@@ -86,7 +86,7 @@ Each AI call uses MiMo-V2.5-Pro via 9Router gateway. Estimated token usage per i
 - Document type detection (Contract, Paper, Invoice, Report, Resume, etc.)
 - Language identification (auto-detect ID/EN/CN/etc.)
 - Word count + char count
-- Powered by MiMo long-chain reasoning
+- Powered by long-chain reasoning
 
 ### 💬 Document Chat
 - Conversational Q&A about the document
@@ -125,7 +125,7 @@ scanify/
 │   ├── layout.tsx              # Root layout + font loading
 │   └── page.tsx                # Main UI (single-page app)
 ├── lib/
-│   └── ai.ts                   # AI API wrapper (9Router → MiMo)
+│   └── ai.ts                   # AI API wrapper
 ├── public/                     # Static assets
 ├── .env.local                  # AI API config
 ├── tailwind.config.js          # Tailwind + custom pixel theme
@@ -160,9 +160,9 @@ npm start
 ### Environment Variables
 
 ```env
-AI_BASE_URL=http://localhost:20128/v1    # 9Router gateway
-AI_API_KEY=***                           # API key (use 'none' for 9Router)
-AI_MODEL=xmtp/mimo-v2.5-pro              # Model identifier
+AI_BASE_URL=https://api.your-provider.com/v1   # OpenAI-compatible endpoint
+AI_API_KEY=your_api_key                        # API key
+AI_MODEL=your-model-name                       # Model identifier
 ```
 
 ---
@@ -182,7 +182,7 @@ AI_MODEL=xmtp/mimo-v2.5-pro              # Model identifier
 
 - **PDF Parsing:** [pdf-parse](https://www.npmjs.com/package/pdf-parse) — PDF text extraction
 - **DOCX Parsing:** [mammoth](https://www.npmjs.com/package/mammoth) — Word document → clean text
-- **AI Analysis:** MiMo-V2.5-Pro via 9Router — long-chain reasoning for documents
+- **AI Analysis:** OpenAI-compatible reasoning model — long-chain reasoning for documents
 
 ---
 
@@ -194,6 +194,4 @@ MIT
 
 ## 🔗 Links
 
-- **App:** [Scanify Live Demo](http://194.233.83.169:3007)
-- **GitHub:** [github.com/askudot](https://github.com/askudot/)
-- **Powered by:** [Xiaomi MiMo](https://platform.xiaomimimo.com/)
+- **GitHub:** [github.com/askudot/scanify](https://github.com/askudot/scanify)
