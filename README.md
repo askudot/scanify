@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📄 Scanify
 
-## Getting Started
+> AI-powered document scanner. Upload, analyze, and chat with your documents instantly.
 
-First, run the development server:
+![Scanify](https://img.shields.io/badge/Next.js-16-black?style=flat-square) ![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square) ![AI](https://img.shields.io/badge/AI-powered-red?style=flat-square)
+
+## ✨ Features
+
+- 📄 **Extract** — Pull clean text from PDF, DOCX, TXT, MD
+- ✨ **Analyze** — AI summary, key points, document type & language detection
+- 💬 **Chat** — Ask anything about your document with full context
+- 🌐 **Multi-language** — English, Indonesian, Chinese, and more
+- ⚡ **Fast** — Most documents analyzed in under 5 seconds
+- 🔒 **Private** — No accounts, no tracking, no storage
+
+## 🎨 Design
+
+Pixel-art aesthetic inspired by retro UI design with modern responsiveness. Built with Pixelify Sans + VT323 fonts and pixel-style borders/shadows.
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 16 (App Router) + TypeScript
+- **Styling**: Tailwind CSS 4 + custom pixel-art theme
+- **AI**: OpenAI-compatible API (works with any provider)
+- **Document parsing**: pdf-parse, mammoth
+- **UI**: react-dropzone, lucide-react
+
+## 🚀 Quick Start
 
 ```bash
+# Clone
+git clone https://github.com/askudot/scanify.git
+cd scanify
+
+# Install
+npm install
+
+# Configure (.env.local)
+AI_API_KEY=your_api_key
+AI_BASE_URL=https://api.your-provider.com/v1
+AI_MODEL=your-model-name
+
+# Dev
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Production
+npm run build
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📦 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+scanify/
+├── app/
+│   ├── api/
+│   │   ├── extract/    # File text extraction
+│   │   ├── analyze/    # Document analysis
+│   │   └── chat/       # Chat with document
+│   ├── globals.css     # Pixel-art theme
+│   ├── layout.tsx      # Root layout + fonts
+│   └── page.tsx        # Main UI
+├── lib/
+│   └── ai.ts           # AI client setup
+└── public/
+```
 
-## Learn More
+## 🔌 API Routes
 
-To learn more about Next.js, take a look at the following resources:
+| Route | Method | Purpose |
+|-------|--------|---------|
+| `/api/extract` | POST | Extract text from uploaded file |
+| `/api/analyze` | POST | Generate summary + key points |
+| `/api/chat` | POST | Chat with document context |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎯 Use Cases
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Legal**: Contract analysis, clause extraction
+- **Research**: Paper summarization, Q&A
+- **Business**: Report insights, data extraction
+- **Education**: Study aid, document understanding
+- **Finance**: Invoice parsing, statement analysis
 
-## Deploy on Vercel
+## 📝 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+MIT © [askudot](https://github.com/askudot)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🌟 Demo
+
+Live: [scanify.vercel.app](https://scanify.vercel.app)
