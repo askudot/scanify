@@ -1,26 +1,124 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf8f5;
+  --foreground: #1a1a1a;
+  --primary: #e5322d;
+  --primary-dark: #c42822;
+  --border-pixel: #1a1a1a;
+  --muted: #6b7280;
+  --card: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--primary);
+  --color-card: var(--card);
+  --font-pixel: var(--font-pixelify), monospace;
+  --font-mono-pixel: var(--font-vt323), monospace;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-pixelify), system-ui, sans-serif;
+  image-rendering: pixelated;
+}
+
+/* Pixel-style sharp borders & shadows */
+.pixel-border {
+  border: 3px solid var(--border-pixel);
+  box-shadow: 4px 4px 0px var(--border-pixel);
+  transition: all 0.1s ease;
+}
+
+.pixel-border:hover {
+  box-shadow: 2px 2px 0px var(--border-pixel);
+  transform: translate(2px, 2px);
+}
+
+.pixel-border-active {
+  box-shadow: 0px 0px 0px var(--border-pixel);
+  transform: translate(4px, 4px);
+}
+
+.pixel-btn {
+  background: var(--primary);
+  color: white;
+  border: 3px solid var(--border-pixel);
+  box-shadow: 4px 4px 0px var(--border-pixel);
+  font-family: var(--font-pixelify);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.1s ease;
+  cursor: pointer;
+  image-rendering: pixelated;
+}
+
+.pixel-btn:hover {
+  box-shadow: 2px 2px 0px var(--border-pixel);
+  transform: translate(2px, 2px);
+}
+
+.pixel-btn:active {
+  box-shadow: 0px 0px 0px var(--border-pixel);
+  transform: translate(4px, 4px);
+}
+
+.pixel-btn-secondary {
+  background: white;
+  color: var(--foreground);
+}
+
+/* Scanline effect for retro vibe */
+.scanlines::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0,0,0,0.02) 0px,
+    rgba(0,0,0,0.02) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Dotted grid background */
+.dot-grid {
+  background-image: radial-gradient(circle, #00000010 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Pixel font utilities */
+.font-pixel {
+  font-family: var(--font-pixelify), monospace;
+}
+
+.font-mono-pixel {
+  font-family: var(--font-vt323), monospace;
+  letter-spacing: 0.02em;
+}
+
+/* Custom scrollbar — pixel style */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+  border-left: 2px solid var(--border-pixel);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border: 2px solid var(--border-pixel);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
 }
